@@ -3,17 +3,16 @@ const Project = require('../DataModel/ProjectModel');
 const router = express.Router();
 
 // Assign a project
-router.post('/assign', async (req, res) => {
+router.post('/assign-project', async (req, res) => {
     try {
-        // Create and save the project directly using `Project.create`
-        const project = await Project.create(req.body);
+        const project = new Project(req.body);
+        await project.save();
         res.status(201).send(project);
-    } catch (err) {
-        console.error('Error creating project:', err.message); // Log error for debugging
-        res.status(500).send({ error: err.message });
     }
-});
-
+    catch (err) {
+        res.status(500).send(err);
+    }
+  });
 
 // Fetch all projects for a specific user
 router.get('/:userId', async (req, res) => {

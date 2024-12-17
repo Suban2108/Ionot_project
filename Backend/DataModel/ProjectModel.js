@@ -9,11 +9,11 @@ const projectSchema = new mongoose.Schema({
     },
     assignedTo: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'UserModel'
     },
     status: {
         type: String,
-        enum: ['Pending', 'Accepted', 'Completed'],
+        enum: ['Pending', 'Accepted', 'In Progress', 'Completed'],
         default: 'Pending'
     },
     progress: {

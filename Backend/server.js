@@ -12,6 +12,9 @@ app.use('/projects', projectRoutes);
 const userRoutes = require('./Routes/UserRoutes');
 app.use('/users', userRoutes);
 
+const taskRoutes = require('./Routes/TaskRoutes');
+app.use('/tasks', taskRoutes);
+
 app.get('/', (req, res) => {
     res.send('Welcome to the Ionot Project API');
   });
